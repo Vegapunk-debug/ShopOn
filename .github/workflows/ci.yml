@@ -1,0 +1,43 @@
+name: Ci Pipeline
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        working-directory: ./server
+        run: npm i
+
+      - name: Run server linter
+        working-directory: ./server
+        run: npm run lint
+
+      - name: Run tests
+        working-directory: ./server
+        run: npm test
+
+      - name: Install Client dependencies
+        working-directory: ./client
+        run: npm i
+
+      - name: Run client linter
+        working-directory: ./client
+        run: npm run lint
+
+      - name: Build Client
+        working-directory: ./client
+        run: npm run build
+
+      - name: Deploy to EC2 (Mock)
+        run: |
+          echo "Connecting to AWS EC2 Instance via SSH..."
+          echo "Executing deployment script..."
+          echo "docker restart shopon-app"
+          echo "Deployment Successful!"
