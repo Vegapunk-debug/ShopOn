@@ -10,5 +10,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm i
-      - run: npm test
+
+      - name: Install dependencies
+        working-directory: ./server
+        run: npm i
+
+      - name: Run tests
+        working-directory: ./server
+        run: npm test
+
+      - name: Install Client dependencies
+        working-directory: ./client
+        run: npm i
+
+      - name: Build Client
+        working-directory: ./client
+        run: npm run build
