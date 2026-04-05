@@ -4,7 +4,7 @@ This project serves as a robust foundation for an e-commerce platform, demonstra
 
 ---
 
-## 🏛️ Project Architecture
+## Project Architecture
 
 ### **Frontend**
 - **Framework**: [React](https://reactjs.org/) (Powered by [Vite](https://vitejs.dev/))
@@ -23,7 +23,7 @@ This project serves as a robust foundation for an e-commerce platform, demonstra
 
 ---
 
-## ⚙️ Automated Workflow
+## Automated Workflow
 
 1. **Local Development**: Use the idempotent `run.sh` script to build and launch the environment.
 2. **CI Validation**: Every `push` and `pull_request` triggers the **GitHub Actions Pipeline**.
@@ -34,7 +34,7 @@ This project serves as a robust foundation for an e-commerce platform, demonstra
 
 ---
 
-## 🎨 Design Decisions & Challenges
+## Design Decisions & Challenges
 
 - **Prisma & SQLite**: Chosen for rapid iteration while maintaining strong data integrity.
 - **Vanilla CSS**: Prioritized to demonstrate deep knowledge of CSS layout principles.
@@ -42,9 +42,58 @@ This project serves as a robust foundation for an e-commerce platform, demonstra
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
-Run the idempotent setup script to build the images and launch the containers:
+### **One-Command Setup (Recommended)**
+Run the idempotent setup script to build the Docker images and launch the complete environment:
 ```bash
 bash run.sh
+```
+
+---
+
+### **Manual Setup (Developer Mode)**
+
+If you prefer to run the components separately without Docker:
+
+#### **1. Database & Backend Configuration**
+Navigate to the server directory, install dependencies, and initialize the database:
+```bash
+cd server
+npm install
+npx prisma generate
+npx prisma migrate dev --name init
+```
+*Note: This will create a local `dev.db` file using SQLite.*
+
+#### **2. Start Backend Server**
+Launch the server in development mode (with hot-reload):
+```bash
+npm run dev
+```
+*The API will be available at `http://localhost:5001`.*
+
+#### **3. Frontend Setup**
+In a new terminal, navigate to the client directory and start the development server:
+```bash
+cd client
+npm install
+npm run dev
+```
+*The web app will be available at `http://localhost:5173`.*
+
+---
+
+## 🧪 Testing Suite
+
+### **Unit & Integration Tests**
+Run server-side tests:
+```bash
+cd server && npm test
+```
+
+### **End-to-End Tests**
+Launch Cypress to verify user flows:
+```bash
+cd client && npm run test:e2e
 ```
