@@ -7,15 +7,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'ok',
     message: 'ShopSmart Backend is running',
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   });
 });
-
 
 // Serve static files from the React app in production
 if (process.env.NODE_ENV === 'production') {
