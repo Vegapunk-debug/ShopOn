@@ -22,12 +22,10 @@ jobs:
       - name: Run server linter
         working-directory: ./server
         run: npm run lint
-        continue-on-error: true
 
       - name: Run tests
         working-directory: ./server
         run: npm test
-        continue-on-error: true
 
       - name: Install Client dependencies
         working-directory: ./client
@@ -36,7 +34,6 @@ jobs:
       - name: Run client linter
         working-directory: ./client
         run: npm run lint
-        continue-on-error: true
 
       - name: Build Client
         working-directory: ./client
