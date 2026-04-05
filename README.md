@@ -71,7 +71,6 @@ Launch the server in development mode (with hot-reload):
 ```bash
 npm run dev
 ```
-*The API will be available at `http://localhost:5001`.*
 
 #### **3. Frontend Setup**
 In a new terminal, navigate to the client directory and start the development server:
@@ -80,11 +79,10 @@ cd client
 npm install
 npm run dev
 ```
-*The web app will be available at `http://localhost:5173`.*
 
 ---
 
-## 🧪 Testing Suite
+## Testing Suite
 
 ### **Unit & Integration Tests**
 Run server-side tests:
